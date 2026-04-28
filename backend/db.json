@@ -1,0 +1,20 @@
+{
+  "usuarios": [
+    {
+      "nome": "Joao",
+      "email": "teste@gmail.com",
+      "id": "rF0EXvZOnJY"
+    },
+    {
+      "nome": "Felippe",
+      "email": "felippe@gmail.com",
+      "id": "F4h-GAxqu_o"
+    },
+    {
+      "nome": "aaa",
+      "email": "aaaa@gmail.com",
+      "id": "vL6pFG2krBg"
+    }
+  ],
+  "$schema": "./node_modules/json-server/schema.json"
+}
