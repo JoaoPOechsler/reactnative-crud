@@ -1,8 +1,13 @@
-import { FlatList, View, Text, ActivityIndicator } from 'react-native';
+import { FlatList, View, Text, ActivityIndicator, useWindowDimensions, Platform } from 'react-native';
 import CardUsuario from './cardUsuario';
 import styles from '../estilos/estilos';
 
 export default function ListarUsuarios({ usuarios, onEditar, onExcluir, editandoId, carregando }) {
+  const { width } = useWindowDimensions();
+
+  const isDesktop = Platform.OS === 'web' && width > 768;
+  const numColumns = isDesktop ? 2 : 1;
+
   if (carregando) {
     return (
       <View style={styles.loadingContainer}>
@@ -20,15 +25,19 @@ export default function ListarUsuarios({ usuarios, onEditar, onExcluir, editando
       </View>
 
       <FlatList
+        key={numColumns} // força re-render ao mudar colunas
         data={usuarios}
         keyExtractor={(item) => String(item.id)}
+        numColumns={numColumns}
         renderItem={({ item }) => (
-          <CardUsuario
-            usuario={item}
-            onEditar={onEditar}
-            onExcluir={onExcluir}
-            editandoId={editandoId}
-          />
+          <View style={isDesktop ? styles.gridItem : styles.listItem}>
+            <CardUsuario
+              usuario={item}
+              onEditar={onEditar}
+              onExcluir={onExcluir}
+              editandoId={editandoId}
+            />
+          </View>
         )}
         ListEmptyComponent={
           <View style={styles.emptyContainer}>
@@ -36,7 +45,7 @@ export default function ListarUsuarios({ usuarios, onEditar, onExcluir, editando
             <Text style={styles.emptyText}>Nenhum usuário cadastrado ainda.</Text>
           </View>
         }
-        contentContainerStyle={{ paddingBottom: 20 }}
+        contentContainerStyle={isDesktop ? styles.gridContainer : { paddingBottom: 20 }}
       />
     </>
   );

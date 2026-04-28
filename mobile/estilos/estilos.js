@@ -205,6 +205,17 @@ const styles = StyleSheet.create({
     color: '#b91c1c',
     fontSize: 13,
   },
+  gridContainer: {
+    paddingHorizontal: 8,
+    paddingBottom: 20,
+  },
+  gridItem: {
+    flex: 1,
+    margin: 8,
+  },
+  listItem: {
+    flex: 1,
+  },
 });
 
 export default styles;
