@@ -5,14 +5,14 @@ import styles from '../estilos/estilos';
 export default function Formulario({ onSalvar, onCancelar, usuarioEditando }) {
   const modoEdicao = usuarioEditando !== null;
 
-  const [form, setForm] = useState({ nome: '', email: '' });
+  const [form, setForm] = useState({ nome: '', email: '', senha: '', perfil: 'usuario' });
   const [salvando, setSalvando] = useState(false);
 
   useEffect(() => {
     if (usuarioEditando) {
-      setForm({ nome: usuarioEditando.nome, email: usuarioEditando.email });
+      setForm({ nome: usuarioEditando.nome, email: usuarioEditando.email, senha: '', perfil: usuarioEditando.perfil || 'usuario' });
     } else {
-      setForm({ nome: '', email: '' });
+      setForm({ nome: '', email: '', senha: '', perfil: 'usuario' });
     }
   }, [usuarioEditando]);
 
@@ -25,6 +25,10 @@ export default function Formulario({ onSalvar, onCancelar, usuarioEditando }) {
       Alert.alert('Atenção', 'Informe um e-mail válido.');
       return false;
     }
+    if (!modoEdicao && !form.senha.trim()) {
+      Alert.alert('Atenção', 'Informe a senha.');
+      return false;
+    }
     return true;
   };
 
@@ -33,7 +37,7 @@ export default function Formulario({ onSalvar, onCancelar, usuarioEditando }) {
     setSalvando(true);
     try {
       await onSalvar(form, usuarioEditando?.id);
-      setForm({ nome: '', email: '' });
+      setForm({ nome: '', email: '', senha: '', perfil: 'usuario' });
     } finally {
       setSalvando(false);
     }
@@ -62,12 +66,38 @@ export default function Formulario({ onSalvar, onCancelar, usuarioEditando }) {
         autoCapitalize="none"
       />
 
-      <View style={styles.buttonRow}>
+      {!modoEdicao && (
+        <TextInput
+          style={styles.input}
+          placeholder="Senha"
+          value={form.senha}
+          onChangeText={(text) => setForm({ ...form, senha: text })}
+          secureTextEntry
+        />
+      )}
+
+      <View style={styles.perfilSelector}>
+        <Text style={styles.perfilSelectorLabel}>Perfil:</Text>
         <TouchableOpacity
-          style={styles.btnPrimary}
-          onPress={handleSalvar}
-          disabled={salvando}
+          style={[styles.perfilOpcao, form.perfil === 'usuario' && styles.perfilOpcaoAtivo]}
+          onPress={() => setForm({ ...form, perfil: 'usuario' })}
         >
+          <Text style={[styles.perfilOpcaoText, form.perfil === 'usuario' && styles.perfilOpcaoTextAtivo]}>
+            Usuário
+          </Text>
+        </TouchableOpacity>
+        <TouchableOpacity
+          style={[styles.perfilOpcao, form.perfil === 'admin' && styles.perfilOpcaoAtivo]}
+          onPress={() => setForm({ ...form, perfil: 'admin' })}
+        >
+          <Text style={[styles.perfilOpcaoText, form.perfil === 'admin' && styles.perfilOpcaoTextAtivo]}>
+            Admin
+          </Text>
+        </TouchableOpacity>
+      </View>
+
+      <View style={styles.buttonRow}>
+        <TouchableOpacity style={styles.btnPrimary} onPress={handleSalvar} disabled={salvando}>
           <Text style={styles.btnText}>
             {salvando ? 'Salvando...' : modoEdicao ? 'Atualizar' : 'Cadastrar'}
           </Text>

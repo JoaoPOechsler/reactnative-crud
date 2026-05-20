@@ -1,0 +1,17 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(npm install *)",
+      "Bash(echo \"JWT_SECRET=chave_secreta_super_segura_troque_em_producao\" > \"c:\\\\Users\\\\joao_oechsler\\\\Documents\\\\Dev-mobile\\\\projeto\\\\backend\\\\.env\")",
+      "Bash(New-Item -ItemType Directory -Force \"c:\\\\Users\\\\joao_oechsler\\\\Documents\\\\Dev-mobile\\\\projeto\\\\mobile\\\\contexto\")",
+      "Bash(Out-Null)",
+      "Bash(New-Item -ItemType Directory -Force \"c:\\\\Users\\\\joao_oechsler\\\\Documents\\\\Dev-mobile\\\\projeto\\\\mobile\\\\telas\")",
+      "Bash(Write-Output \"ok\")",
+      "PowerShell(New-Item -ItemType Directory -Force \"c:\\\\Users\\\\joao_oechsler\\\\Documents\\\\Dev-mobile\\\\projeto\\\\mobile\\\\contexto\")",
+      "PowerShell(New-Item -ItemType Directory -Force \"c:\\\\Users\\\\joao_oechsler\\\\Documents\\\\Dev-mobile\\\\projeto\\\\mobile\\\\telas\")"
+    ],
+    "additionalDirectories": [
+      "c:\\Users\\joao_oechsler\\Documents\\Dev-mobile\\projeto\\backend"
+    ]
+  }
+}

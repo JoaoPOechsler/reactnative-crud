@@ -2,7 +2,7 @@ import { FlatList, View, Text, ActivityIndicator, useWindowDimensions, Platform 
 import CardUsuario from './cardUsuario';
 import styles from '../estilos/estilos';
 
-export default function ListarUsuarios({ usuarios, onEditar, onExcluir, editandoId, carregando }) {
+export default function ListarUsuarios({ usuarios, onEditar, onExcluir, editandoId, carregando, somenteLeitura }) {
   const { width } = useWindowDimensions();
 
   const isDesktop = Platform.OS === 'web' && width > 768;
@@ -25,7 +25,7 @@ export default function ListarUsuarios({ usuarios, onEditar, onExcluir, editando
       </View>
 
       <FlatList
-        key={numColumns} // força re-render ao mudar colunas
+        key={numColumns}
         data={usuarios}
         keyExtractor={(item) => String(item.id)}
         numColumns={numColumns}
@@ -36,6 +36,7 @@ export default function ListarUsuarios({ usuarios, onEditar, onExcluir, editando
               onEditar={onEditar}
               onExcluir={onExcluir}
               editandoId={editandoId}
+              somenteLeitura={somenteLeitura}
             />
           </View>
         )}

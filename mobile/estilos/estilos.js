@@ -216,6 +216,138 @@ const styles = StyleSheet.create({
   listItem: {
     flex: 1,
   },
+
+  // Login
+  loginContainer: {
+    flex: 1,
+    backgroundColor: '#f0f2f5',
+    justifyContent: 'center',
+    alignItems: 'center',
+    padding: 24,
+  },
+  loginBox: {
+    backgroundColor: '#fff',
+    borderRadius: 16,
+    padding: 28,
+    width: '100%',
+    maxWidth: 400,
+    shadowColor: '#000',
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.1,
+    shadowRadius: 8,
+    elevation: 4,
+  },
+  loginIcon: {
+    fontSize: 48,
+    textAlign: 'center',
+    marginBottom: 8,
+  },
+  loginTitle: {
+    fontSize: 22,
+    fontWeight: 'bold',
+    color: '#1e1b4b',
+    textAlign: 'center',
+    marginBottom: 4,
+  },
+  loginSubtitle: {
+    fontSize: 13,
+    color: '#6b7280',
+    textAlign: 'center',
+    marginBottom: 20,
+  },
+
+  // Header com botão de logout
+  headerRow: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    width: '100%',
+  },
+  btnLogout: {
+    backgroundColor: 'rgba(255,255,255,0.25)',
+    borderRadius: 8,
+    paddingHorizontal: 14,
+    paddingVertical: 6,
+  },
+  btnLogoutText: {
+    color: '#fff',
+    fontWeight: '700',
+    fontSize: 13,
+  },
+
+  // Badges de perfil
+  badgeAdmin: {
+    color: '#7c3aed',
+    fontWeight: '700',
+    fontSize: 11,
+  },
+  badgeUsuario: {
+    color: '#0369a1',
+    fontWeight: '700',
+    fontSize: 11,
+  },
+
+  // Card de perfil (TelaUsuario)
+  perfilCard: {
+    backgroundColor: '#fff',
+    margin: 16,
+    borderRadius: 12,
+    padding: 16,
+    shadowColor: '#000',
+    shadowOffset: { width: 0, height: 1 },
+    shadowOpacity: 0.06,
+    shadowRadius: 4,
+    elevation: 2,
+  },
+  perfilLabel: {
+    fontSize: 11,
+    color: '#9ca3af',
+    textTransform: 'uppercase',
+    letterSpacing: 1,
+    marginBottom: 4,
+  },
+  perfilNome: {
+    fontSize: 18,
+    fontWeight: '700',
+    color: '#111827',
+  },
+  perfilInfo: {
+    fontSize: 13,
+    color: '#6b7280',
+    marginTop: 2,
+  },
+
+  // Seletor de perfil no formulário
+  perfilSelector: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    marginBottom: 12,
+    gap: 8,
+  },
+  perfilSelectorLabel: {
+    fontSize: 14,
+    color: '#374151',
+    fontWeight: '600',
+  },
+  perfilOpcao: {
+    borderWidth: 1,
+    borderColor: '#d1d5db',
+    borderRadius: 8,
+    paddingHorizontal: 14,
+    paddingVertical: 6,
+  },
+  perfilOpcaoAtivo: {
+    backgroundColor: '#66a9e0',
+    borderColor: '#66a9e0',
+  },
+  perfilOpcaoText: {
+    fontSize: 13,
+    color: '#374151',
+    fontWeight: '600',
+  },
+  perfilOpcaoTextAtivo: {
+    color: '#fff',
+  },
 });
 
 export default styles;
